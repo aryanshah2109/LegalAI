@@ -1,4 +1,17 @@
 venv/
 .env
 
+# Context Data
 data/
+
+# Cache Files
+__pycache__/
+*.pyc
+
+# HuggingFace / Transformers models
+~/.cache/
+cache/
+huggingface/
+
+# VSCode
+.vscode/

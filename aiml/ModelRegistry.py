@@ -1,7 +1,7 @@
 from aiml.ModelCreator import EmbeddingModelCreator, HFModelCreator
 from aiml.ModelWrapper import RetrieverModelWrapper
 
-from app.config import EMBEDDING_MODEL_NAME, HF_MODEL_NAME
+from app.model_config import EMBEDDING_MODEL_NAME, HF_MODEL_NAME
 
 class ModelRegistry:
     _instance = None

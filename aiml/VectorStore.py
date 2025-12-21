@@ -1,31 +1,26 @@
 from langchain_community.vectorstores import FAISS
 import faiss
+import os
 
-from aiml.ModelCreator import EmbeddingModelCreator
 from aiml.DocumentLoader import DocumentLoader
+from aiml.ModelRegistry import ModelRegistry
 
 class VectorStore:
-    def __init__(self, embedding_model_name, embedding_global_model = None):
-        self.embedding_model_name = embedding_model_name
-        self.embedding_global_model = embedding_global_model
+    def __init__(self):
+        registry = ModelRegistry()
 
-    def get_embedding_model(self):
-        if self.embedding_global_model is None:
-            embedding_model =  EmbeddingModelCreator().embedding_model_create(self.embedding_model_name)
+        self.embedding_model = registry.embedding_model
+
+
+    def vector_store_creator(self, input_path: str = "/data/", batch_size: int = 500, output_path: str = "/vector_store/legal_files"):
+
         
-        return embedding_model
-
-
-    def vector_store_creator(self, input_path: str, batch_size: int, output_path: str, ):
-
-        embedding_model = self.get_embedding_model()
-
-        embedding_dim = len(embedding_model.embed_query("dimensions check"))
+        embedding_dim = len(self.embedding_model.embed_query("dimensions check"))
 
         index = faiss.IndexFlatL2(embedding_dim)
 
         vector_store = FAISS(
-            embedding_function = embedding_model,
+            embedding_function = self.embedding_model,
             index = index,
             docstore = {},
             index_to_docstore_id = {}

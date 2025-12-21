@@ -1,5 +1,3 @@
-import torch
-
 class RetrieverModelWrapper:
 
     def __init__(self, model, tokenizer):
@@ -37,7 +35,7 @@ class RetrieverModelWrapper:
 
     def __call__(self, prompt: str) -> str:
         
-        from app.config import RETRIEVER_CONFIG
+        from app.model_config import RETRIEVER_CONFIG
 
         self.generate(prompt, **RETRIEVER_CONFIG)
 

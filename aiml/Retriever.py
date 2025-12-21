@@ -1,12 +1,8 @@
 from langchain.retrievers import MultiQueryRetriever
-from langchain.retrievers.contextual_compression import ContextualCompressionRetriever
-from langchain.retrievers.document_compressors import LLMChainExtractor
 from langchain.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-from aiml.ModelCreator import HFModelCreator, EmbeddingModelCreator
-from aiml.VectorStore import VectorStore
 from aiml.prompts import RETRIEVER_PROMPT
 from aiml.ModelRegistry import ModelRegistry
 
