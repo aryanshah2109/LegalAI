@@ -1,3 +1,5 @@
+import os
+
 from langchain.retrievers import MultiQueryRetriever
 from langchain.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
@@ -13,7 +15,17 @@ class Retriever:
         self.embedding_model = registry.embedding_model
         self.retriever_model = registry.retriever_model
         self.vector_store_path = vector_store_path
-    
+
+        if not os.path.exists(vector_store_path):
+            raise RuntimeError("Vector store not found. Startup build failed.")
+
+        self.vector_store = FAISS.load_local(
+            vector_store_path,
+            embeddings = self.embedding_model,
+            allow_dangerous_deserialization = True
+        )
+
+
     def retrive_context(self):
         
         parser = StrOutputParser()
@@ -26,14 +38,9 @@ class Retriever:
             } 
         )
 
-        vector_store = FAISS.load_local(
-            self.vector_store_path,
-            embeddings = self.embedding_model,
-            allow_dangerous_deserialization = True
-        )
-
+        
         multi_query_retriever = MultiQueryRetriever.from_llm(
-            retriever = vector_store.as_retriever(
+            retriever = self.vector_store.as_retriever(
                 search_type = "mmr",
                 search_kwargs = {
                     "k" : 5,
