@@ -8,3 +8,11 @@ RETRIEVER_CONFIG = {
     "temperature" : 0.0,
     "top_p" : 1.0
 }
+
+RAG_CONFIG = {
+    "max_new_tokens": 512,
+    "temperature": 0.2,
+    "do_sample": False,
+    "top_p": 1.0,
+    "repetition_penalty": 1.15
+}

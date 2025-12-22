@@ -25,8 +25,9 @@ class Retriever:
             allow_dangerous_deserialization = True
         )
 
+        self.build_retriever()
 
-    def retrive_context(self):
+    def build_retriever(self):
         
         parser = StrOutputParser()
 
@@ -39,7 +40,7 @@ class Retriever:
         )
 
         
-        multi_query_retriever = MultiQueryRetriever.from_llm(
+        self.multi_query_retriever = MultiQueryRetriever.from_llm(
             retriever = self.vector_store.as_retriever(
                 search_type = "mmr",
                 search_kwargs = {
@@ -51,4 +52,9 @@ class Retriever:
             prompt = prompt
         )
 
-        return multi_query_retriever
+    def retrieve_context(self, query: str) -> str:
+
+        context = self.multi_query_retriever.get_relevant_documents(query)
+
+        return context   
+    
