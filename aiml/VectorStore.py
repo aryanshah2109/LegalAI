@@ -1,5 +1,5 @@
 from langchain_community.vectorstores import FAISS
-from langchain.docstore import InMemoryDocstore
+from langchain_community.docstore.in_memory import InMemoryDocstore
 import faiss
 import os
 
