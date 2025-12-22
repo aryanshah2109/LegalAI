@@ -25,6 +25,9 @@ async def lifespan(app: FastAPI):
         vector_store_path = "./vector_store/legal_files"
     )
 
+    yield
+    
+
 app = FastAPI(
     title = "LegalAI - A RAG System",
     lifespan = lifespan
