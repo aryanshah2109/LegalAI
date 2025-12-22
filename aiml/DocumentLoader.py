@@ -36,11 +36,12 @@ class DocumentLoader:
 
         loader = DirectoryLoader(
             path = path,
-            glob = "**/*",
+            glob="**/*.{pdf,txt,csv,md}",
             recursive=True,
             loader_cls = self.loader_function,
             use_multithreading=True,
-            max_concurrency=4
+            max_concurrency=4,
+            show_progress = True
         )
 
         splitter = RecursiveCharacterTextSplitter(
