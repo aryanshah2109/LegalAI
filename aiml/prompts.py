@@ -24,7 +24,7 @@ Guidelines:
 Legal Question:
 {query}
 
-''',
+'''
    
 RAG_PROMPT = PromptTemplate(
     template= '''
