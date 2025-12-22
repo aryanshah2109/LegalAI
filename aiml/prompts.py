@@ -22,7 +22,6 @@ Guidelines:
 Legal Question:
 {query}
 
-{format_instructions}
 '''
 
 RAG_PROMPT = '''

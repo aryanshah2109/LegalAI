@@ -21,9 +21,14 @@ async def lifespan(app: FastAPI):
     ModelRegistry()
 
     # Creating RAG pipeline
+    # legal_ai = LegalAI(
+    #     vector_store_path = "./vector_store/legal_files"
+    # )
+
     legal_ai = LegalAI(
-        vector_store_path = "./vector_store/legal_files"
+        vector_store_path = "/content/drive/MyDrive/vector_store/legal_files"
     )
+
 
     yield
 

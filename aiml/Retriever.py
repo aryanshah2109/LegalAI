@@ -32,14 +32,10 @@ class Retriever:
 
     def build_retriever(self):
         
-        parser = StrOutputParser()
 
         prompt = PromptTemplate(
             template = RETRIEVER_PROMPT,
-            input_variables = ["query"],
-            partial_variables = {
-                "format_instructions" : parser.get_format_instructions()
-            } 
+            input_variables = ["query"]
         )
 
         
