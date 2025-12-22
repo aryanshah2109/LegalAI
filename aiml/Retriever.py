@@ -8,7 +8,7 @@ from langchain.schema import Document
 
 from typing import List
 
-from aiml.prompts import RETRIEVER_PROMPT
+from aiml.prompts import RETRIEVER_PROMPT_TEMPLATE
 from aiml.ModelRegistry import ModelRegistry
 
 class Retriever:
@@ -34,7 +34,7 @@ class Retriever:
         
 
         prompt = PromptTemplate(
-            template = RETRIEVER_PROMPT,
+            template = RETRIEVER_PROMPT_TEMPLATE,
             input_variables = ["query"]
         )
 

@@ -1,4 +1,6 @@
-RETRIEVER_PROMPT = '''
+from langchain_core.prompts import PromptTemplate
+
+RETRIEVER_PROMPT_TEMPLATE = '''
 You are a legal research assistant helping retrieve authoritative legal documents.
 
 Your task is to generate multiple alternative search queries for the legal question below
@@ -22,9 +24,10 @@ Guidelines:
 Legal Question:
 {query}
 
-'''
-
-RAG_PROMPT = '''
+''',
+   
+RAG_PROMPT = PromptTemplate(
+    template= '''
 You are a legal assistant.
 
 Answer the question strictly using the provided legal context.
@@ -45,4 +48,6 @@ Legal Context:
 
 
 {format_instructions}
-'''
+''',
+    input_variables= ["user_query", "retrieved_context"]
+)
