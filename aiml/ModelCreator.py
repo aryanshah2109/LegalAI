@@ -1,5 +1,5 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from langchain_huggingface import  HuggingFaceEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 import torch
 
 class HFModelCreator:
