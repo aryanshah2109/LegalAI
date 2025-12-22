@@ -5,14 +5,12 @@ accelerate==0.27.2
 huggingface-hub==0.24.0
 sentence-transformers==3.0.1
 
-# LangChain (LOCK THESE)
+# LangChain (SAFE SET)
 langchain==0.3.15
-langchain-core==0.3.35
 langchain-community==0.3.15
 langchain-huggingface==0.1.2
-langchain-text-splitters==0.3.11
 
-# Vector DB
+# Vector Store
 faiss-cpu==1.8.0
 
 # Backend
@@ -23,7 +21,7 @@ pydantic-settings==2.4.0
 python-dotenv==1.0.1
 python-multipart==0.0.9
 
-# Data / Utils
+# Data & Utils
 numpy==1.26.4
 datasets==2.18.0
 protobuf==4.25.3
