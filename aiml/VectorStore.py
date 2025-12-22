@@ -38,9 +38,16 @@ class VectorStore:
 
         for doc in loader.lazy_load():
 
-            chunk = splitter.split_documents([doc])
+            chunks = splitter.split_documents([doc])
 
-            batches.extend(chunk)
+            for chunk in chunks:
+                chunk.metadata.update({
+                    "source_file" : doc.metadata.get("source"),
+                    "page" : doc.metadata.get("page"),
+                    "doc_type" : "legal"
+                })
+
+            batches.extend(chunks)
 
             if len(batches) >= batch_size:
                 

@@ -26,14 +26,18 @@ async def lifespan(app: FastAPI):
     )
 
     yield
-    
+
 
 app = FastAPI(
     title = "LegalAI - A RAG System",
     lifespan = lifespan
 )
 
-@app.post("/query")
+@app.get("/health")
+def health():
+    return {"health":"OK"}
+
+@app.post("/rag")
 def query_legal_ai(query: str):
     return {
         "answer" : legal_ai.run(query)

@@ -1,4 +1,4 @@
-EMBEDDING_MODEL_NAME = "microsoft/Phi-3.5-mini-instruct"
+EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 HF_MODEL_NAME = "microsoft/Phi-3.5-mini-instruct"
 
