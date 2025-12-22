@@ -56,7 +56,7 @@ class RetrieverModelWrapper:
         
         from app.model_config import RETRIEVER_CONFIG
 
-        self.generate(prompt, **RETRIEVER_CONFIG)
+        return self.generate(prompt, **RETRIEVER_CONFIG)
 
 
 class RAGModelWrapper:
@@ -100,5 +100,5 @@ class RAGModelWrapper:
 
         from app.model_config import RAG_CONFIG
 
-        self.generate(prompt, **RAG_CONFIG)
+        return self.generate(prompt, **RAG_CONFIG)
 

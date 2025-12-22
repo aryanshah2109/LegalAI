@@ -17,8 +17,9 @@ class ModelRegistry:
         
         :param cls: Description
         '''
+
         if cls._instance is None:
-            cls._instance = super().__name__(cls)
+            cls._instance = super().__new__(cls)
             cls._instance._load_models()
         
         return cls._instance

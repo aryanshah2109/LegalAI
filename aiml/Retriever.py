@@ -4,6 +4,9 @@ from langchain.retrievers import MultiQueryRetriever
 from langchain.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain.schema import Document
+
+from typing import List
 
 from aiml.prompts import RETRIEVER_PROMPT
 from aiml.ModelRegistry import ModelRegistry
@@ -52,7 +55,7 @@ class Retriever:
             prompt = prompt
         )
 
-    def retrieve_context(self, query: str) -> str:
+    def retrieve_context(self, query: str) -> List[Document]:
 
         context = self.multi_query_retriever.get_relevant_documents(query)
 

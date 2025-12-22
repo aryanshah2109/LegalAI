@@ -22,12 +22,12 @@ class LegalAI:
 
         self.chain = (
             {
-                "context" : retrieved_docs | format_context,
-                "query" : RunnablePassthrough()
-            } | 
-            RAG_PROMPT | 
-            self.rag_model | 
-            StrOutputParser()
+                "retrieved_context" : retrieved_docs | format_context,
+                "user_query" : RunnablePassthrough()
+            } 
+            | RAG_PROMPT  
+            | self.rag_model 
+            | StrOutputParser()
         )
 
     def format_context(self, context: str):

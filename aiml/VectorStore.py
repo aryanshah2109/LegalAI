@@ -1,4 +1,5 @@
 from langchain_community.vectorstores import FAISS
+from langchain.docstore import InMemoryDocstore
 import faiss
 import os
 
@@ -27,7 +28,7 @@ class VectorStore:
         vector_store = FAISS(
             embedding_function = self.embedding_model,
             index = index,
-            docstore = {},
+            docstore = InMemoryDocstore({}),
             index_to_docstore_id = {}
         )
 
@@ -43,7 +44,7 @@ class VectorStore:
 
             if len(batches) >= batch_size:
                 
-                vector_store.add_documents(chunk)
+                vector_store.add_documents(batches)
 
                 batches = []
 
