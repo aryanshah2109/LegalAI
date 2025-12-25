@@ -15,7 +15,9 @@ class LegalAI:
         self.retriever = Retriever(vector_store_path)
 
         retrieved_docs = RunnableLambda(
-            lambda query: self.retriever.retrieve_context(query)
+            lambda input_data: self.retriever.retrieve_context(
+                input_data["query"] if isinstance(input_data, dict) else input_data
+            )
         )
 
         format_context = RunnableLambda(self.format_context)
