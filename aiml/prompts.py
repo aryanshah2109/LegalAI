@@ -22,7 +22,7 @@ Guidelines:
 - Do NOT number the queries.
 
 Query:
-{query}
+{question}
 '''
    
 RAG_PROMPT = PromptTemplate(

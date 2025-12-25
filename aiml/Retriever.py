@@ -35,7 +35,7 @@ class Retriever:
 
         prompt = PromptTemplate(
             template = RETRIEVER_PROMPT_TEMPLATE,
-            input_variables = ["query"]
+            input_variables = ["question"]
         )
 
         
