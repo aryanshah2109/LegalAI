@@ -23,7 +23,7 @@ class LegalAI:
         self.chain = (
             {
                 "retrieved_context" : retrieved_docs | format_context,
-                "user_query" : RunnablePassthrough()
+                "query" : RunnablePassthrough()
             } 
             | RAG_PROMPT  
             | self.rag_model 
@@ -35,7 +35,8 @@ class LegalAI:
 
         return formatted_docs
 
-    def run(self, query: str) -> str:
-
-        return self.chain.invoke(query)
+    def run(self, input_data):
+        if isinstance(input_data, dict):
+            input_data = input_data.get("query") or input_data.get("question")
+        return self.chain.invoke(input_data)
     

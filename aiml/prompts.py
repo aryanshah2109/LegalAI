@@ -22,8 +22,7 @@ Guidelines:
 - Do NOT number the queries.
 
 Legal Question:
-{query}
-
+{query}{question}
 '''
    
 RAG_PROMPT = PromptTemplate(
@@ -41,7 +40,7 @@ Rules:
 - If the query is not related to Legal Context, say: "This is a Legal Query chatbot and cannot answer queries excluding any legal context"
 
 Question:
-{user_query}
+{query}
 
 Legal Context:
 {retrieved_context}
@@ -49,5 +48,5 @@ Legal Context:
 
 {format_instructions}
 ''',
-    input_variables= ["user_query", "retrieved_context"]
+    input_variables= ["query", "retrieved_context"]
 )

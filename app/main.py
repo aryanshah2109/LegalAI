@@ -38,6 +38,10 @@ app = FastAPI(
     lifespan = lifespan
 )
 
+@app.get("/")
+def home():
+    return {"Name":"LegalAI"}
+
 @app.get("/health")
 def health():
     return {"health":"OK"}
