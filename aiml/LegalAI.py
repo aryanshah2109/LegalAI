@@ -38,5 +38,8 @@ class LegalAI:
     def run(self, input_data):
         if isinstance(input_data, dict):
             input_data = input_data.get("query") or input_data.get("question")
+
+        if not isinstance(input_data, str):
+            raise ValueError("Input must be a string query")
+
         return self.chain.invoke(input_data)
-    
