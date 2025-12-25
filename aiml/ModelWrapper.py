@@ -56,6 +56,13 @@ class RetrieverModelWrapper:
         
         from app.model_config import RETRIEVER_CONFIG
 
+        if isinstance(prompt, dict):
+            
+            prompt = prompt.get("question")
+
+        if not isinstance(prompt, str):
+            raise ValueError(f"ModelWrapper expected str, got {type(prompt)}")
+
         return self.generate(prompt, **RETRIEVER_CONFIG)
 
 
