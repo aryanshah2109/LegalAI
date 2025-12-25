@@ -1,3 +1,5 @@
+from langchain_core.prompt_values import StringPromptValue
+
 class RetrieverModelWrapper:
 
     def __init__(self, model, tokenizer):
@@ -55,6 +57,9 @@ class RetrieverModelWrapper:
         '''
         
         from app.model_config import RETRIEVER_CONFIG
+
+        if isinstance(prompt, StringPromptValue):
+            prompt = prompt.text
 
         if isinstance(prompt, dict):
             
