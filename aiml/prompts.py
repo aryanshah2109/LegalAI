@@ -21,8 +21,8 @@ Guidelines:
 - Output each query on a new line.
 - Do NOT number the queries.
 
-Legal Question:
-{query}{question}
+Query:
+{query}
 '''
    
 RAG_PROMPT = PromptTemplate(
