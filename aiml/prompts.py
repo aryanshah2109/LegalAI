@@ -26,7 +26,6 @@ Query:
 {question}
 
 
-{format_instructions}
 '''
    
 RAG_PROMPT = PromptTemplate(
@@ -49,11 +48,6 @@ Question:
 Legal Context:
 {retrieved_context}
 
-
-{format_instructions}
 ''',
-    input_variables= ["query", "retrieved_context"],
-    partial_variables = {
-        "format_instructions" : StrOutputParser().get_format_instructions()
-    }
+    input_variables = ["query", "retrieved_context"],
 )

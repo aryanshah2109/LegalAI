@@ -36,9 +36,6 @@ class Retriever:
         prompt = PromptTemplate(
             template = RETRIEVER_PROMPT_TEMPLATE,
             input_variables = ["question"],
-            partial_variables={
-                "format_instructions":StrOutputParser().get_format_instructions()
-            }
         )
 
         
