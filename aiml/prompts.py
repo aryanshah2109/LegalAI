@@ -1,4 +1,5 @@
 from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
 RETRIEVER_PROMPT_TEMPLATE = '''
 You are a legal research assistant helping retrieve authoritative legal documents.
@@ -23,6 +24,9 @@ Guidelines:
 
 Query:
 {question}
+
+
+{format_instructions}
 '''
    
 RAG_PROMPT = PromptTemplate(
@@ -48,5 +52,8 @@ Legal Context:
 
 {format_instructions}
 ''',
-    input_variables= ["query", "retrieved_context"]
+    input_variables= ["query", "retrieved_context"],
+    partial_variables = {
+        "format_instructions" : StrOutputParser().get_format_instructions()
+    }
 )
