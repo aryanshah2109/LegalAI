@@ -61,12 +61,11 @@ class RetrieverModelWrapper:
         if isinstance(prompt, StringPromptValue):
             prompt = prompt.text
 
-        if isinstance(prompt, dict):
-            
+        if isinstance(prompt, dict):            
             prompt = prompt.get("question")
 
         if not isinstance(prompt, str):
-            raise ValueError(f"ModelWrapper expected str, got {type(prompt)}")
+            raise ValueError(f"RetrieverModelWrapper expected str, got {type(prompt)}")
 
         return self.generate(prompt, **RETRIEVER_CONFIG)
 
@@ -111,6 +110,16 @@ class RAGModelWrapper:
     def __call__(self, prompt: str) -> str:
 
         from app.model_config import RAG_CONFIG
+
+        if isinstance(prompt, StringPromptValue):
+            prompt = prompt.text
+
+        if isinstance(prompt, dict):            
+            prompt = prompt.get("question")
+
+        if not isinstance(prompt, str):
+            raise ValueError(f"RAGModelWrapper expected str, got {type(prompt)}")
+
 
         return self.generate(prompt, **RAG_CONFIG)
 
